@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.athae.skillsandclasses.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "skillsandclasses.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Fireball",
+  "cooldown": 10,
+  "manaCost": 20,
+  "particleEffect": "fire_particle",
+  "elementType": "fire",
+  "damage": 50,
+  "range": 30
+}
