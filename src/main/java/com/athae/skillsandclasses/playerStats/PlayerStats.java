@@ -1,5 +1,6 @@
 package com.athae.skillsandclasses.playerStats;
 
+
 import com.athae.skillsandclasses.items.StatModifyingItem;
 import net.minecraft.world.item.ItemStack;
 
@@ -164,6 +165,7 @@ public class PlayerStats {
             case "light_defense" -> this.lightDefense += amount;
             case "earth_defense" -> this.earthDefense += amount;
             case "dark_defense" -> this.darkDefense += amount;
+            default -> throw new IllegalArgumentException("Unknown stat: " + stat);
         }
     }
 

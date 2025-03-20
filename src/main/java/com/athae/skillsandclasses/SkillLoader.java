@@ -1,7 +1,7 @@
 package com.athae.skillsandclasses;
 
-import com.athae.skillsandclasses.Spells.Skill;
 import com.athae.skillsandclasses.Spells.Fireball;
+import com.athae.skillsandclasses.Spells.Skill;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.minecraft.resources.ResourceLocation;

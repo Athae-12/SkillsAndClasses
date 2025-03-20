@@ -1,23 +1,36 @@
 package com.athae.skillsandclasses.client.gui;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
-import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
-import net.minecraftforge.client.event.ScreenOpenEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 
-@Mod.EventBusSubscriber(modid = Skillsandclasses.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-public class InventoryTabHandler {
+public class InventoryTabHandler extends Screen {
 
-    @SubscribeEvent
-    public static void onScreenOpen(ScreenOpenEvent event) {
-        if (event.getScreen() instanceof InventoryScreen || event.getScreen() instanceof CreativeModeInventoryScreen) {
-            InventoryScreen inventoryScreen = (InventoryScreen) event.getScreen();
-            inventoryScreen.addRenderableWidget(new Button(inventoryScreen.getGuiLeft() + 120, inventoryScreen.getGuiTop() + 10, 20, 20, Component.literal("S"), button -> {
-                Minecraft.getInstance().setScreen(new SkillsScreen());
-            }));
-        }
+    public InventoryTabHandler() {
+        super(Component.literal("Custom GUI"));
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(guiGraphics); // Render background first
+
+        // Render text in the center
+        drawCenteredString(guiGraphics, this.font, Component.literal("Hello, GUI!"), this.width / 2, this.height / 2, 0xFFFFFF);
+
+        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+    }
+
+    private void drawCenteredString(GuiGraphics guiGraphics, Font font, Component text, int x, int y, int color) {
+        int width = font.width(text);
+        guiGraphics.drawString(font, text, x - width / 2, y, color);
+    }
+
+    @Override
+    public boolean isPauseScreen() {
+        return false;
     }
 }

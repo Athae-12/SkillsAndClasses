@@ -1,6 +1,7 @@
 package com.athae.skillsandclasses;
 
 import com.athae.skillsandclasses.Spells.Skill;
+import com.athae.skillsandclasses.client.gui.InventoryTabHandler;
 import com.athae.skillsandclasses.client.gui.SkillsScreen;
 import com.athae.skillsandclasses.playerStats.PlayerStatsCapability;
 import net.minecraft.client.KeyMapping;
@@ -50,12 +51,22 @@ public class KeyBindingsHandler {
         event.register(OPEN_SKILLS_SCREEN);
     }
 
-    private static void activateSkill(int skillIndex) {
-        Minecraft.getInstance().player.getCapability(PlayerStatsCapability.STATS_CAPABILITY).ifPresent(stats -> {
-            Skill skill = stats.getSkill(ModSkills.SKILLS.get(skillIndex).get());
-            if (skill != null) {
-                skill.activate(Minecraft.getInstance().player);
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ClientEvents {
+        @SubscribeEvent
+        public static void onKeyPress(InputEvent.Key event) {
+            if (OPEN_SKILLS_SCREEN.isDown()) {
+                Minecraft.getInstance().setScreen(new InventoryTabHandler());
             }
-        });
+        }
+
+        private static void activateSkill(int skillIndex) {
+            Minecraft.getInstance().player.getCapability(PlayerStatsCapability.STATS_CAPABILITY).ifPresent(stats -> {
+                Skill skill = stats.getSkill(ModSkills.SKILLS.get(skillIndex).get());
+                if (skill != null) {
+                    skill.activate(Minecraft.getInstance().player);
+                }
+            });
+        }
     }
 }

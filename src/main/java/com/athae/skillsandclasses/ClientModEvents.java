@@ -5,8 +5,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ScreenOpenEvent;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -20,7 +20,7 @@ public class ClientModEvents {
     }
 
     @SubscribeEvent
-    public static void onScreenOpen(ScreenOpenEvent event) {
+    public static void onScreenOpen(ScreenEvent.Init event) {
         if (event.getScreen() instanceof InventoryScreen) {
             // Add a button to open the SkillsScreen
         }

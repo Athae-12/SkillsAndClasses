@@ -1,9 +1,13 @@
 package com.athae.skillsandclasses;
 
+import net.minecraft.world.inventory.MenuType;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -29,34 +33,39 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import com.athae.skillsandclasses.KeyBindingsHandler;
+import com.athae.skillsandclasses.client.gui.SkillsScreenMenu;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(Skillsandclasses.MODID)
 public class Skillsandclasses {
 
-    // Define mod id in a common place for everything to reference
     public static final String MODID = "skillsandclasses";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "skillsandclasses" namespace
+
+    // Create a Deferred Register to hold Blocks, Items, and Creative Mode Tabs
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "skillsandclasses" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "skillsandclasses" namespace
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(ForgeRegistries.Keys.CREATIVE_MODE_TABS, MODID);
 
-    // Creates a new Block with the id "skillsandclasses:example_block", combining the namespace and path
+    // Register items and blocks
     public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-    // Creates a new BlockItem with the id "skillsandclasses:example_block", combining the namespace and path
     public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
-
-    // Creates a new food item with the id "skillsandclasses:example_id", nutrition 1 and saturation 2
     public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().nutrition(1).saturationMod(2f).build())));
 
-    // Creates a creative tab with the id "skillsandclasses:example_tab" for the example item, that is placed after the combat tab
+    // Register Creative Mode Tab
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> EXAMPLE_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
-        output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+        output.accept(EXAMPLE_ITEM.get());
     }).build());
+
+    // Register Menu Screens
+    public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MODID);
+    public static final RegistryObject<MenuType<SkillsScreenMenu>> SKILLS_SCREEN_MENU_TYPE = MENU_TYPES.register("skills_screen",
+            () -> new MenuType<>(SkillsScreenMenu::new));
+    public static final RegistryObject<MenuType<SkillsScreenMenu>> SKILLS_SCREEN = MENU_TYPES.register("skills_screen", () -> new MenuType<>(SkillsScreenMenu::new));
+
+    public static void registerScreens(IEventBus eventBus) {
+        MENU_TYPES.register(eventBus); // Register menu types to event bus
+    }
 
     public Skillsandclasses() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -68,10 +77,13 @@ public class Skillsandclasses {
         modEventBus.addListener(this::addCreative);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        registerScreens(modEventBus); // Register screens
+        MENU_TYPES.register(modEventBus); // Register menu types to event bus
     }
 
     private void setup(final FMLClientSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new com.athae.skillsandclasses.client.HealthBarOverlay());
+        MinecraftForge.EVENT_BUS.register(KeyBindingsHandler.class); // Register KeyBindingsHandler
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -82,9 +94,8 @@ public class Skillsandclasses {
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(EXAMPLE_BLOCK_ITEM);
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(EXAMPLE_BLOCK_ITEM.get());
     }
 
     @SubscribeEvent
@@ -99,9 +110,6 @@ public class Skillsandclasses {
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-            for (KeyMapping key : KeyBindingsHandler.SKILL_KEYS) {
-                event.register(key);
-            }
         }
     }
 }
