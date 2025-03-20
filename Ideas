@@ -1,0 +1,97 @@
+Ideas For Skills and Classes
+
+Classes: 
+  Rogue
+    Soulknife
+      Phantom
+    Thief
+      Hero Thief
+    Assassin
+      Wind Walker
+
+  Wizard
+    Elementalist
+      Cryo
+      Pyro
+      Electro
+    Chronomancer
+      Time Lord
+    Warlock
+      Necromancer Lord
+    Dark Magician
+      Occultist
+
+  Knight
+    Guardian
+      Fortress
+    Black Knight
+      Berserker
+    
+    Fighter
+      Monk
+        Asura
+      Spearman
+        Dragoon
+      Sword Master
+        Sword Saint
+      
+      Cleric
+        White Mage (C+W)
+        Saint
+          Pope
+        Battle Cleric
+          War God
+     
+      Archer
+        Tamer
+          Beast Lord
+        Hunter
+          Heaven Piercer
+        Gatling
+          Storm Bringer
+        Sniper(A+R)
+        Pheonix Flame (A+W)
+Combo Classes
+  Requires Player to pick 2 different classes at each "ascendancy"
+  Shadow Monarch (R+W)
+    White Mage (C+W)
+    Earth Shaker (F+W)
+    Paladin (K+C)
+    Monster Hunter(K+A)
+    Death Knight (K+W)
+    Dragon Slayer (K+F)
+    Demon Slayer (F+C)
+    Sniper(A+R)
+    Pheonix Flame (A+W)
+    
+Ascendancy:
+
+Shadow Monarch 
+  proficiency in daggers
+  increased attack speed
+  undead summons are now shadows
+  50% damage from “light” dmg type
+
+Necromancer Lord 
+  Proficiency in scythe
+  -20% health
+  Summon General
+    %10 heal every 10 seconds
+    %5 attack boost to summons
+  Health shared with summons
+
+Hero Thief 
+  Hero's Dagger (toggle)
+    %25 increase for dagger-type weapons 
+  Phantom form
+    5 seconds of invulnerability but unable to damage foe
+  Steal
+    Temporary 10% boost to damage and defense
+    Temporary debuff for with -10% damage and defense
+
+Earth Shaker (Fighter, Wizard)
+  Stone Skin
+    Activate with a stone-type block in hand to create armor
+    -x% speed
+    Stone type = durability and speed debuff
+    Speed * (Durability) = 1/750 * (Durability) + (-.2)
