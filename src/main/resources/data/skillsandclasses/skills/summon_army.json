@@ -1,0 +1,12 @@
+{
+  "name": "Summon Army",
+  "description": "Summon all stored summons to fight for you.",
+  "type": "summon",
+  "level": 1,
+  "cast_time": 1,
+  "cooldown": 30,
+  "mana_cost": 50,
+  "effect": {
+    "type": "summon_army"
+  }
+}

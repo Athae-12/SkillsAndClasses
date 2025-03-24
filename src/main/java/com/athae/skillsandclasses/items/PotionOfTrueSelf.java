@@ -1,6 +1,7 @@
 package com.athae.skillsandclasses.items;
 
 import com.athae.skillsandclasses.playerStats.PlayerStats;
+import com.athae.skillsandclasses.playerStats.PlayerStatsCapability;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -12,10 +13,10 @@ public class PotionOfTrueSelf extends Item {
         super(properties);
     }
 
-    @Override
+
     public ItemStack finishUsingItem(ItemStack stack, Level world, Player player) {
         if (!world.isClientSide) {
-            PlayerStats stats = player.getCapability(PlayerStatsProvider.PLAYER_STATS).orElse(null);
+            PlayerStats stats = player.getCapability(PlayerStatsCapability.STATS_CAPABILITY).orElse(null);
             if (stats != null) {
                 stats.resetStats();
             }

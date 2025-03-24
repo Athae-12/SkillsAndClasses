@@ -1,0 +1,51 @@
+{
+  "name": "Summon Undead Archer",
+  "description": "Summon a skeleton archer to fight for you.",
+  "type": "summon",
+  "level": 1,
+  "cast_time": 1,
+  "cooldown": 10,
+  "duration": 60,
+  "range": 30,
+  "mana_cost": 50,
+  "target_type": "enemy",
+  "effect": {
+    "type": "summon",
+    "entity": {
+      "type": "minecraft:skeleton",
+      "weapon": "minecraft:bow",
+      "armor": {
+        "1-20": {
+          "head": "minecraft:leather_helmet",
+          "chest": "minecraft:leather_chestplate",
+          "legs": "minecraft:leather_leggings",
+          "feet": "minecraft:leather_boots"
+        },
+        "21-40": {
+          "head": "minecraft:iron_helmet",
+          "chest": "minecraft:iron_chestplate",
+          "legs": "minecraft:iron_leggings",
+          "feet": "minecraft:iron_boots"
+        },
+        "41-60": {
+          "head": "minecraft:golden_helmet",
+          "chest": "minecraft:golden_chestplate",
+          "legs": "minecraft:golden_leggings",
+          "feet": "minecraft:golden_boots"
+        },
+        "61-80": {
+          "head": "minecraft:diamond_helmet",
+          "chest": "minecraft:diamond_chestplate",
+          "legs": "minecraft:diamond_leggings",
+          "feet": "minecraft:diamond_boots"
+        },
+        "81-100": {
+          "head": "minecraft:netherite_helmet",
+          "chest": "minecraft:netherite_chestplate",
+          "legs": "minecraft:netherite_leggings",
+          "feet": "minecraft:netherite_boots"
+        }
+      }
+    }
+  }
+}

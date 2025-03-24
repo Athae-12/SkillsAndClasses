@@ -1,0 +1,55 @@
+{
+  "name": "Summon Undead Warrior",
+  "description": "Summon a skeleton warrior to fight for you.",
+  "type": "summon",
+  "level": 1,
+  "cast_time": 1,
+  "cooldown": 10,
+  "duration": 60,
+  "range": 30,
+  "mana_cost": 50,
+  "target_type": "enemy",
+  "effect": {
+    "type": "summon",
+    "entity": {
+      "type": "minecraft:skeleton",
+      "armor": {
+        "1-20": {
+          "mainhand": "simplysword:stone_scythe",
+          "head": "minecraft:leather_helmet",
+          "chest": "minecraft:leather_chestplate",
+          "legs": "minecraft:leather_leggings",
+          "feet": "minecraft:leather_boots"
+        },
+        "21-40": {
+          "mainhand": "simplysword:iron_scythe",
+          "head": "minecraft:iron_helmet",
+          "chest": "minecraft:iron_chestplate",
+          "legs": "minecraft:iron_leggings",
+          "feet": "minecraft:iron_boots"
+        },
+        "41-60": {
+            "mainhand": "simplysword:golden_scythe",
+          "head": "minecraft:golden_helmet",
+          "chest": "minecraft:golden_chestplate",
+          "legs": "minecraft:golden_leggings",
+          "feet": "minecraft:golden_boots"
+        },
+        "61-80": {
+            "mainhand": "simplysword:diamond_scythe",
+          "head": "minecraft:diamond_helmet",
+          "chest": "minecraft:diamond_chestplate",
+          "legs": "minecraft:diamond_leggings",
+          "feet": "minecraft:diamond_boots"
+        },
+        "81-100": {
+            "mainhand": "simplysword:netherite_scythe",
+          "head": "minecraft:netherite_helmet",
+          "chest": "minecraft:netherite_chestplate",
+          "legs": "minecraft:netherite_leggings",
+          "feet": "minecraft:netherite_boots"
+        }
+      }
+    }
+  }
+}

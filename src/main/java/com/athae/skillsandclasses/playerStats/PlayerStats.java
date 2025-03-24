@@ -1,8 +1,12 @@
 package com.athae.skillsandclasses.playerStats;
 
-
+import com.athae.skillsandclasses.Spells.Skill;
 import com.athae.skillsandclasses.items.StatModifyingItem;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerStats {
     private int level = 1;
@@ -35,14 +39,30 @@ public class PlayerStats {
     // Player class
     private PlayerClass playerClass = null; // No default class
 
+    // Skills
+    private final Map<ResourceLocation, Skill> skills = new HashMap<>();
+
     // Getters and setters
-    public int getLevel() { return level; }
-    public void setLevel(int level) { this.level = level; }
+    public int getLevel() {
+        return level;
+    }
 
-    public double getExperience() { return experience; }
-    public void setExperience(double experience) { this.experience = experience; }
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
-    public PlayerClass getPlayerClass() { return playerClass; }
+    public double getExperience() {
+        return experience;
+    }
+
+    public void setExperience(double experience) {
+        this.experience = experience;
+    }
+
+    public PlayerClass getPlayerClass() {
+        return playerClass;
+    }
+
     public void setPlayerClass(PlayerClass playerClass) {
         this.playerClass = playerClass;
 
@@ -54,69 +74,174 @@ public class PlayerStats {
         }
     }
 
-    public double getMovementSpeed() { return movementSpeed; }
-    public void setMovementSpeed(double movementSpeed) { this.movementSpeed = movementSpeed; }
+    public double getMovementSpeed() {
+        return movementSpeed;
+    }
 
-    public double getJumpHeight() { return jumpHeight; }
-    public void setJumpHeight(double jumpHeight) { this.jumpHeight = jumpHeight; }
+    public void setMovementSpeed(double movementSpeed) {
+        this.movementSpeed = movementSpeed;
+    }
 
-    public double getDamage() { return damage; }
-    public void setDamage(double damage) { this.damage = damage; }
+    public double getJumpHeight() {
+        return jumpHeight;
+    }
 
-    public double getDefense() { return defense; }
-    public void setDefense(double defense) { this.defense = defense; }
+    public void setJumpHeight(double jumpHeight) {
+        this.jumpHeight = jumpHeight;
+    }
 
-    public double getHealth() { return health; }
-    public void setHealth(double health) { this.health = health; }
+    public double getDamage() {
+        return damage;
+    }
 
-    public double getMana() { return mana; }
-    public void setMana(double mana) { this.mana = mana; }
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
 
-    public double getStamina() { return stamina; }
-    public void setStamina(double stamina) { this.stamina = stamina; }
+    public double getDefense() {
+        return defense;
+    }
 
-    public double getCritDamage() { return critDamage; }
-    public void setCritDamage(double critDamage) { this.critDamage = critDamage; }
+    public void setDefense(double defense) {
+        this.defense = defense;
+    }
 
-    public double getCritChance() { return critChance; }
-    public void setCritChance(double critChance) { this.critChance = critChance; }
+    public double getHealth() {
+        return health;
+    }
+
+    public void setHealth(double health) {
+        this.health = health;
+    }
+
+    public double getMana() {
+        return mana;
+    }
+
+    public void setMana(double mana) {
+        this.mana = mana;
+    }
+
+    public double getStamina() {
+        return stamina;
+    }
+
+    public void setStamina(double stamina) {
+        this.stamina = stamina;
+    }
+
+    public double getCritDamage() {
+        return critDamage;
+    }
+
+    public void setCritDamage(double critDamage) {
+        this.critDamage = critDamage;
+    }
+
+    public double getCritChance() {
+        return critChance;
+    }
+
+    public void setCritChance(double critChance) {
+        this.critChance = critChance;
+    }
 
     // Elemental stats
-    public double getFireAffinity() { return fireAffinity; }
-    public void setFireAffinity(double fireAffinity) { this.fireAffinity = fireAffinity; }
+    public double getFireAffinity() {
+        return fireAffinity;
+    }
 
-    public double getWaterAffinity() { return waterAffinity; }
-    public void setWaterAffinity(double waterAffinity) { this.waterAffinity = waterAffinity; }
+    public void setFireAffinity(double fireAffinity) {
+        this.fireAffinity = fireAffinity;
+    }
 
-    public double getLightningAffinity() { return lightningAffinity; }
-    public void setLightningAffinity(double lightningAffinity) { this.lightningAffinity = lightningAffinity; }
+    public double getWaterAffinity() {
+        return waterAffinity;
+    }
 
-    public double getLightAffinity() { return lightAffinity; }
-    public void setLightAffinity(double lightAffinity) { this.lightAffinity = lightAffinity; }
+    public void setWaterAffinity(double waterAffinity) {
+        this.waterAffinity = waterAffinity;
+    }
 
-    public double getEarthAffinity() { return earthAffinity; }
-    public void setEarthAffinity(double earthAffinity) { this.earthAffinity = earthAffinity; }
+    public double getLightningAffinity() {
+        return lightningAffinity;
+    }
 
-    public double getDarkAffinity() { return darkAffinity; }
-    public void setDarkAffinity(double darkAffinity) { this.darkAffinity = darkAffinity; }
+    public void setLightningAffinity(double lightningAffinity) {
+        this.lightningAffinity = lightningAffinity;
+    }
 
-    public double getFireDefense() { return fireDefense; }
-    public void setFireDefense(double fireDefense) { this.fireDefense = fireDefense; }
+    public double getLightAffinity() {
+        return lightAffinity;
+    }
 
-    public double getWaterDefense() { return waterDefense; }
-    public void setWaterDefense(double waterDefense) { this.waterDefense = waterDefense; }
+    public void setLightAffinity(double lightAffinity) {
+        this.lightAffinity = lightAffinity;
+    }
 
-    public double getLightningDefense() { return lightningDefense; }
-    public void setLightningDefense(double lightningDefense) { this.lightningDefense = lightningDefense; }
+    public double getEarthAffinity() {
+        return earthAffinity;
+    }
 
-    public double getLightDefense() { return lightDefense; }
-    public void setLightDefense(double lightDefense) { this.lightDefense = lightDefense; }
+    public void setEarthAffinity(double earthAffinity) {
+        this.earthAffinity = earthAffinity;
+    }
 
-    public double getEarthDefense() { return earthDefense; }
-    public void setEarthDefense(double earthDefense) { this.earthDefense = earthDefense; }
+    public double getDarkAffinity() {
+        return darkAffinity;
+    }
 
-    public double getDarkDefense() { return darkDefense; }
-    public void setDarkDefense(double darkDefense) { this.darkDefense = darkDefense; }
+    public void setDarkAffinity(double darkAffinity) {
+        this.darkAffinity = darkAffinity;
+    }
+
+    public double getFireDefense() {
+        return fireDefense;
+    }
+
+    public void setFireDefense(double fireDefense) {
+        this.fireDefense = fireDefense;
+    }
+
+    public double getWaterDefense() {
+        return waterDefense;
+    }
+
+    public void setWaterDefense(double waterDefense) {
+        this.waterDefense = waterDefense;
+    }
+
+    public double getLightningDefense() {
+        return lightningDefense;
+    }
+
+    public void setLightningDefense(double lightningDefense) {
+        this.lightningDefense = lightningDefense;
+    }
+
+    public double getLightDefense() {
+        return lightDefense;
+    }
+
+    public void setLightDefense(double lightDefense) {
+        this.lightDefense = lightDefense;
+    }
+
+    public double getEarthDefense() {
+        return earthDefense;
+    }
+
+    public void setEarthDefense(double earthDefense) {
+        this.earthDefense = earthDefense;
+    }
+
+    public double getDarkDefense() {
+        return darkDefense;
+    }
+
+    public void setDarkDefense(double darkDefense) {
+        this.darkDefense = darkDefense;
+    }
 
     // Methods to modify stats
     public void addExperience(double amount) {
@@ -186,5 +311,13 @@ public class PlayerStats {
         this.experience = 0.0;
         this.playerClass = null;
         // Reset other stats if needed
+    }
+
+    public Skill getSkill(ResourceLocation skillId) {
+        return skills.get(skillId);
+    }
+
+    public void addSkill(ResourceLocation skillId, Skill skill) {
+        skills.put(skillId, skill);
     }
 }

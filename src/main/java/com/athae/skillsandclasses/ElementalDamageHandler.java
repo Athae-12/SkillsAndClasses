@@ -1,6 +1,7 @@
 package com.athae.skillsandclasses;
 
 import com.athae.skillsandclasses.playerStats.PlayerStats;
+import com.athae.skillsandclasses.playerStats.PlayerStatsCapability;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,17 +16,17 @@ public class ElementalDamageHandler {
             PlayerStats stats = player.getCapability(PlayerStatsCapability.STATS_CAPABILITY).orElse(null);
             if (stats != null) {
                 if (event.getSource() == ModDamageSources.FIRE) {
-                    event.setAmount(event.getAmount() * (1 - stats.getFireDefense()));
+                    event.setAmount((float) (event.getAmount() * (1 - stats.getFireDefense())));
                 } else if (event.getSource() == ModDamageSources.WATER) {
-                    event.setAmount(event.getAmount() * (1 - stats.getWaterDefense()));
+                    event.setAmount((float) (event.getAmount() * (1 - stats.getWaterDefense())));
                 } else if (event.getSource() == ModDamageSources.LIGHTNING) {
-                    event.setAmount(event.getAmount() * (1 - stats.getLightningDefense()));
+                    event.setAmount((float) (event.getAmount() * (1 - stats.getLightningDefense())));
                 } else if (event.getSource() == ModDamageSources.LIGHT) {
-                    event.setAmount(event.getAmount() * (1 - stats.getLightDefense()));
+                    event.setAmount((float) (event.getAmount() * (1 - stats.getLightDefense())));
                 } else if (event.getSource() == ModDamageSources.EARTH) {
-                    event.setAmount(event.getAmount() * (1 - stats.getEarthDefense()));
+                    event.setAmount((float) (event.getAmount() * (1 - stats.getEarthDefense())));
                 } else if (event.getSource() == ModDamageSources.DARK) {
-                    event.setAmount(event.getAmount() * (1 - stats.getDarkDefense()));
+                    event.setAmount((float) (event.getAmount() * (1 - stats.getDarkDefense())));
                 }
             }
         }

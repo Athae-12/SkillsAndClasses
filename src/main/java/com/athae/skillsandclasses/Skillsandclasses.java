@@ -42,33 +42,29 @@ public class Skillsandclasses {
     public static final String MODID = "skillsandclasses";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    // Create a Deferred Register to hold Blocks, Items, and Creative Mode Tabs
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(ForgeRegistries.Keys.CREATIVE_MODE_TABS, MODID);
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // Register items and blocks
     public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-    public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block",
+            () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().nutrition(1).saturationMod(2f).build())));
 
-    // Register Creative Mode Tab
-    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> EXAMPLE_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
-        output.accept(EXAMPLE_ITEM.get());
+    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> EXAMPLE_ITEM.orElseThrow().getDefaultInstance()).displayItems((parameters, output) -> {
+        EXAMPLE_ITEM.ifPresent(output::accept);
     }).build());
 
-    // Register Menu Screens
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MODID);
-    public static final RegistryObject<MenuType<SkillsScreenMenu>> SKILLS_SCREEN_MENU_TYPE = MENU_TYPES.register("skills_screen",
-            () -> new MenuType<>(SkillsScreenMenu::new));
-    public static final RegistryObject<MenuType<SkillsScreenMenu>> SKILLS_SCREEN = MENU_TYPES.register("skills_screen", () -> new MenuType<>(SkillsScreenMenu::new));
+    public static final RegistryObject<MenuType<SkillsScreenMenu>> SKILLS_SCREEN_MENU_TYPE = MENU_TYPES.register("skills_screen", () -> new MenuType<>(SkillsScreenMenu::new, FeatureFlagSet.of()));
 
     public static void registerScreens(IEventBus eventBus) {
-        MENU_TYPES.register(eventBus); // Register menu types to event bus
+        MENU_TYPES.register(eventBus);
     }
 
     public Skillsandclasses() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModDamageSources.DAMAGE_TYPES.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -77,13 +73,15 @@ public class Skillsandclasses {
         modEventBus.addListener(this::addCreative);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        registerScreens(modEventBus); // Register screens
-        MENU_TYPES.register(modEventBus); // Register menu types to event bus
+        registerScreens(modEventBus);
+        MENU_TYPES.register(modEventBus);
+        ModDamageSources.DAMAGE_TYPES.register(modEventBus);
+        ModDamageEffects.DAMAGE_EFFECTS.register(modEventBus);
     }
 
     private void setup(final FMLClientSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new com.athae.skillsandclasses.client.HealthBarOverlay());
-        MinecraftForge.EVENT_BUS.register(KeyBindingsHandler.class); // Register KeyBindingsHandler
+        MinecraftForge.EVENT_BUS.register(KeyBindingsHandler.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -95,7 +93,7 @@ public class Skillsandclasses {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(EXAMPLE_BLOCK_ITEM.get());
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) EXAMPLE_BLOCK_ITEM.ifPresent(event::accept);
     }
 
     @SubscribeEvent

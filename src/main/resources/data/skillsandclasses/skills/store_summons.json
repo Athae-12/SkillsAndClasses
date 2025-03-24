@@ -1,0 +1,12 @@
+{
+  "name": "Store Summons",
+  "description": "Store currently summoned creatures in a list.",
+  "type": "utility",
+  "level": 1,
+  "cast_time": 1,
+  "cooldown": 10,
+  "mana_cost": 20,
+  "effect": {
+    "type": "store_summons"
+  }
+}

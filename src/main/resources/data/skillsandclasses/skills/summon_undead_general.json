@@ -1,0 +1,61 @@
+{
+  "name": "Summon Undead General",
+  "description": "Summon a large skeleton general to fight for you.",
+  "type": "summon",
+  "level": 1,
+  "cast_time": 1,
+  "cooldown": 10,
+  "duration": 60,
+  "range": 30,
+  "mana_cost": 100,
+  "target_type": "enemy",
+  "effect": {
+    "type": "summon",
+    "entity": {
+      "type": "minecraft:skeleton",
+      "size": 1.5,
+      "armor": {
+        "1-20": {
+          "mainhand": "simplysword:stone_greataxe",
+          "head": "minecraft:leather_helmet",
+          "chest": "minecraft:leather_chestplate",
+          "legs": "minecraft:leather_leggings",
+          "feet": "minecraft:leather_boots"
+        },
+        "21-40": {
+          "mainhand": "simplysword:iron_greataxe",
+          "head": "minecraft:iron_helmet",
+          "chest": "minecraft:iron_chestplate",
+          "legs": "minecraft:iron_leggings",
+          "feet": "minecraft:iron_boots"
+        },
+        "41-60": {
+          "mainhand": "simplysword:golden_greataxe",
+          "head": "minecraft:golden_helmet",
+          "chest": "minecraft:golden_chestplate",
+          "legs": "minecraft:golden_leggings",
+          "feet": "minecraft:golden_boots"
+        },
+        "61-80": {
+          "mainhand": "simplysword:diamond_greataxe",
+          "head": "minecraft:diamond_helmet",
+          "chest": "minecraft:diamond_chestplate",
+          "legs": "minecraft:diamond_leggings",
+          "feet": "minecraft:diamond_boots"
+        },
+        "81-100": {
+          "mainhand": "simplysword:netherite_greataxe",
+          "head": "minecraft:netherite_helmet",
+          "chest": "minecraft:netherite_chestplate",
+          "legs": "minecraft:netherite_leggings",
+          "feet": "minecraft:netherite_boots"
+        }
+      }
+    }
+  },
+  "aura": {
+    "base_heal_amount": 0.05,
+    "heal_increase_per_level": 0.02,
+    "interval": 10
+  }
+}
