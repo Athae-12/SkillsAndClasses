@@ -6,9 +6,14 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class EventCaller<T extends skillsandclassesEvent> {
+public class skillsandclassesCaller<T extends skillsandclassesEvent> {
 
     List<EventConsumer<T>> events = new ArrayList<>();
+
+    public skillsandclassesCaller() {
+    }
+
+    // this makes sure there aren't random concurrentmodification errors etc
     Lock lock = new ReentrantLock();
 
     public T callEvents(T event) {
@@ -28,9 +33,10 @@ public class EventCaller<T extends skillsandclassesEvent> {
         lock.lock();
         try {
             this.events.add(t);
-            events.sort(Comparator.comparingInt(EventConsumer::callOrder));
+            events.sort(Comparator.comparingInt(x -> x.callOrder()));
         } finally {
             lock.unlock();
         }
     }
+
 }

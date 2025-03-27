@@ -1,5 +1,11 @@
 package com.athae.skillsandclasses;
 
+import com.athae.skillsandclasses.resources.Health;
+import com.athae.skillsandclasses.resources.Mana;
+import com.athae.skillsandclasses.resources.Stamina;
+import com.athae.skillsandclasses.registry.IGUID;
+import com.athae.skillsandclasses.resources.Elements;
+import com.athae.skillsandclasses.skillsandclassesRef;
 import com.athae.skillsandclasses.Classes.StatContainer.StatContainer;
 import com.athae.skillsandclasses.Classes.StatContainer.StatData;
 import com.athae.skillsandclasses.data.Stat;
@@ -56,9 +62,7 @@ public class Unit {
 
     }
 
-    public boolean isBloodMage() {
-        return getCalculatedStat(BloodUser.getInstance()).getValue() > 0;
-    }
+    // public boolean isBloodMage() { return getCalculatedStat(BloodUser.getInstance()).getValue() > 0;}
 
     public void clearStats() {
         this.stats = new StatContainer();
@@ -135,21 +139,21 @@ public class Unit {
 
     public StatData energyData() {
         try {
-            return getCalculatedStat(Energy.GUID);
+            return getCalculatedStat(Stamina.GUID);
         } catch (Exception e) {
 
         }
         return StatData.empty();
     }
 
-    public StatData magicShieldData() {
+    /* public StatData magicShieldData() {
         try {
             return getCalculatedStat(MagicShield.GUID);
         } catch (Exception e) {
 
         }
         return StatData.empty();
-    }
+    } */
 
     public StatData manaData() {
         try {

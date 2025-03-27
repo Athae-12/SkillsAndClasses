@@ -6,7 +6,7 @@ package com.athae.skillsandclasses.event_hooks.damage_hooks.util;
             import com.athae.skillsandclasses.util.StackSaving;
             import com.athae.skillsandclasses.util.WeaponFinderUtil;
             import com.google.common.base.Preconditions;
-            import com.athae.skillsandclasses.events.skillandclassesEvents;
+            import com.athae.skillsandclasses.events.skillsandclassesEvents;
             import com.athae.skillsandclasses.entity.data.EntityData;
             import com.athae.skillsandclasses.items.GearItemData;
             import net.minecraft.world.damagesource.DamageSource;
@@ -15,7 +15,7 @@ package com.athae.skillsandclasses.event_hooks.damage_hooks.util;
             import net.minecraft.world.item.ItemStack;
 
             public class AttackInfo {
-                private skillandclassesEvents.OnDamageEntity event;
+                private skillsandclassesEvents.OnDamageEntity event;
                 Mitigation mitigation;
                 boolean canceled = false;
                 LivingEntity targetEntity;
@@ -26,7 +26,7 @@ package com.athae.skillsandclasses.event_hooks.damage_hooks.util;
                 public ItemStack weapon;
                 public GearItemData weaponData;
 
-                public AttackInfo(skillandclassesEvents.OnDamageEntity event, Mitigation miti, LivingEntity target, DamageSource source, float amount) {
+                public AttackInfo(skillsandclassesEvents.OnDamageEntity event, Mitigation miti, LivingEntity target, DamageSource source, float amount) {
                     this.targetEntity = target;
                     this.damageSource = source;
                     this.amount = amount;
