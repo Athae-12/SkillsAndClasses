@@ -1,5 +1,7 @@
 package com.athae.skillsandclasses.registry;
 
+import com.athae.skillsandclasses.registry.info.RegistrationInfo;
+
 import java.util.HashSet;
 import java.util.Set;
 

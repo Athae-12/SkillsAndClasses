@@ -1,9 +1,12 @@
 package com.athae.skillsandclasses.data;
 
+import com.athae.skillsandclasses.unit.Unit;
 import com.athae.skillsandclasses.datapacks.BaseDatapackStat;
 import com.athae.skillsandclasses.interfaces.IAutoLocDesc;
 import com.athae.skillsandclasses.interfaces.IAutoLocName;
+import com.athae.skillsandclasses.interfaces.IStatEffect;
 import com.athae.skillsandclasses.interfaces.IWeighted;
+import com.athae.skillsandclasses.localization.Words;
 import com.athae.skillsandclasses.registry.IGUID;
 import com.athae.skillsandclasses.registry.JsonRegistry;
 import com.athae.skillsandclasses.registry.skillsandclassesRegistryType;

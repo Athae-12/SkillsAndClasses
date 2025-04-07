@@ -1,6 +1,8 @@
 package com.athae.skillsandclasses.events;
 
+import com.athae.skillsandclasses.config.CompatConfig;
 import com.athae.skillsandclasses.event_hooks.damage_hooks.util.AttackInfo;
+import com.athae.skillsandclasses.localization.Words;
 import com.athae.skillsandclasses.skillsandclassesRef;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;

@@ -1,4 +1,4 @@
-package com.athae.skillsandclasses;
+package com.athae.skillsandclasses.packets;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;

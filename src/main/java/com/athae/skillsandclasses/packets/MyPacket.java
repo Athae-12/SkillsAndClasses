@@ -1,6 +1,5 @@
-package com.athae.skillsandclasses;
+package com.athae.skillsandclasses.packets;
 
-import com.athae.skillsandclasses.packets.skillsandclassesPacketContext;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkEvent;

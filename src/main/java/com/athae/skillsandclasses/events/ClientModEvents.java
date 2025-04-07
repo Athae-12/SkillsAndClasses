@@ -1,5 +1,7 @@
-package com.athae.skillsandclasses;
+package com.athae.skillsandclasses.events;
 
+import com.athae.skillsandclasses.KeyBindingsHandler;
+import com.athae.skillsandclasses.Skillsandclasses;
 import com.athae.skillsandclasses.client.gui.SkillsScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;

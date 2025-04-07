@@ -1,4 +1,4 @@
 package com.athae.skillsandclasses.registry;
 
-public abstract class RegistrationInfo {
+public class RegisterAll {
 }

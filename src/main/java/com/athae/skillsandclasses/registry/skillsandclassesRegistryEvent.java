@@ -1,6 +1,7 @@
 package com.athae.skillsandclasses.registry;
 
 import com.athae.skillsandclasses.events.skillsandclassesEvent;
+import com.athae.skillsandclasses.registry.info.RegistrationInfo;
 
 public class skillsandclassesRegistryEvent extends skillsandclassesEvent {
     public skillsandclassesRegistryType type;

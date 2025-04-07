@@ -1,6 +1,14 @@
 package com.athae.skillsandclasses.events;
 
+import com.athae.skillsandclasses.Classes.StatContainer.StatData;
+import com.athae.skillsandclasses.unit.Unit;
+import com.athae.skillsandclasses.data.Stat;
+import com.athae.skillsandclasses.data.StatPriority;
+import com.athae.skillsandclasses.datapacks.test.DatapackStatEffect;
+import com.athae.skillsandclasses.datapacks.test.DatapackStat;
 import com.athae.skillsandclasses.entity.data.EntityData;
+import com.athae.skillsandclasses.interfaces.EffectSides;
+import com.athae.skillsandclasses.interfaces.IStatEffect;
 import com.athae.skillsandclasses.registry.IGUID;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -319,7 +327,7 @@ public abstract class EffectEvent implements IGUID {
 
                         if (stat instanceof DatapackStat) {
                             DatapackStat d = (DatapackStat) stat;
-                            for (DataPackStatEffect eff : d.effect) {
+                            for (DatapackStatEffect eff : d.effect) {
                                 if (eff.worksOnEvent(this)) {
                                     if (eff.Side().equals(side)) {
                                         effects.add(new EffectWithCtx(eff, side, data));

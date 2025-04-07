@@ -2,8 +2,9 @@ package com.athae.skillsandclasses.registry;
 
 import com.athae.skillsandclasses.DatapackBoolean;
 import com.athae.skillsandclasses.Log.skillsandclassesLog;
-import com.athae.skillsandclasses.Packets;
+import com.athae.skillsandclasses.packets.Packets;
 import com.athae.skillsandclasses.events.skillsandclassesEvents;
+import com.athae.skillsandclasses.registry.info.RegistrationInfo;
 import com.athae.skillsandclasses.util.RandomUtils;
 import com.google.common.base.Preconditions;
 import io.netty.buffer.Unpooled;
@@ -14,7 +15,7 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class skillsandclassesRegistryContainer<C extends skillsandclassesRegistry> {
+public class skillsandclassesRegistryContainer<C extends skillsandclassesRegistry<T>> {
 
     private List<String> registersErrorsAlertedFor = new ArrayList<>();
     private List<String> accessorErrosAletedFor = new ArrayList<>();
@@ -53,7 +54,7 @@ public class skillsandclassesRegistryContainer<C extends skillsandclassesRegistr
 
         Preconditions.checkNotNull(cachedBuf, type.id + " error, cachedbuf is null!!!");
 
-        Packets.sendToClient(player, new EfficientRegistryPacket(this.type, Database.getRegistry(type).getFromDatapacks()));
+        Packets.sendToClient(player, new EfficientRegistryPacket(this.type, Database.ExileRegistryType(type).getFromDatapacks()));
 
     }
 
@@ -67,7 +68,7 @@ public class skillsandclassesRegistryContainer<C extends skillsandclassesRegistr
             // save the packetbytebuf, this should save at least 0.1 sec for each time anyone logs in.
             // SUPER important for big mmorpg servers!
 
-            new EfficientRegistryPacket(type, Database.getRegistry(type).getFromDatapacks()).saveToData(cachedBuf);
+            new EfficientRegistryPacket(type, Database.ExileRegistryType(type).getFromDatapacks()).saveToData(cachedBuf);
 
             Preconditions.checkNotNull(cachedBuf);
         }
@@ -112,7 +113,7 @@ public class skillsandclassesRegistryContainer<C extends skillsandclassesRegistr
         return this;
     }
 
-    public void unRegister(skillsandclassesRegistry entry) {
+    public void unRegister(skillsandclassesRegistry<T> entry) {
         if (map.containsKey(entry.GUID())) {
             map.remove(entry.GUID());
         }

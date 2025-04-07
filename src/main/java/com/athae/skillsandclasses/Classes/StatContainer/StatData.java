@@ -1,6 +1,6 @@
 package com.athae.skillsandclasses.Classes.StatContainer;
 
-import com.athae.skillsandclasses.Unit;
+import com.athae.skillsandclasses.unit.Unit;
 import com.athae.skillsandclasses.data.Stat;
 import net.minecraft.util.Mth;
 

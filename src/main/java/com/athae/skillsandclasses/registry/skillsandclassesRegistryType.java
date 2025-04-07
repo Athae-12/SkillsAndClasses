@@ -103,13 +103,13 @@ public class skillsandclassesRegistryType {
         return new BaseDataPackLoader(this, this.id, this.ser);
     }
 
-    public ExileDatapackGenerator getDatapackGenerator() {
-        return new ExileDatapackGenerator<>(modid, getAllForSerialization(), this.id);
+    public DatapackGenerator getDatapackGenerator() {
+        return new DatapackGenerator<>(modid, getAllForSerialization(), this.id);
     }
 
 
     public List getAllForSerialization() {
-        return Database.getRegistry(this)
+        return Database.ExileRegistryType(this)
                 .getSerializable();
     }
 

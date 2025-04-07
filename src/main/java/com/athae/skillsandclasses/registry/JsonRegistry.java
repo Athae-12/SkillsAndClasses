@@ -2,7 +2,7 @@ package com.athae.skillsandclasses.registry;
 
 import com.athae.skillsandclasses.Log.skillsandclassesLog;
 import com.athae.skillsandclasses.interfaces.ISerializable;
-import com.athae.skillsandclasses.registry.RegistrationInfo;
+import com.athae.skillsandclasses.registry.info.RegistrationInfo;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -16,7 +16,7 @@ import java.util.Set;
 public interface JsonRegistry<T> extends skillsandclassesRegistry<T> {
 
     default void addToSerializables(RegistrationInfo info) {
-        Database.getRegistry(getskillsandclassesRegistryType()).addSerializable(this, info);
+        Database.ExileRegistryType(getskillsandclassesRegistryType()).addSerializable(this, info);
     }
 
 

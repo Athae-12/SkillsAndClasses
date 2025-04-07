@@ -1,6 +1,6 @@
-package com.athae.skillsandclasses;
+package com.athae.skillsandclasses.capabilities;
 
-import com.athae.skillsandclasses.capabilities.SpellCapabilityProvider;
+import com.athae.skillsandclasses.Skillsandclasses;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;

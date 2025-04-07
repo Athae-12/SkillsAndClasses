@@ -1,7 +1,6 @@
-package com.athae.skillsandclasses;
+package com.athae.skillsandclasses.Spells;
 
-import com.athae.skillsandclasses.Spells.SummonSpell;
-import com.athae.skillsandclasses.Spells.SummonArmy;
+import com.athae.skillsandclasses.Skillsandclasses;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.Vec3;

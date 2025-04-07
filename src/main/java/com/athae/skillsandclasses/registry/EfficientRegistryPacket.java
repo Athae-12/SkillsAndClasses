@@ -3,13 +3,12 @@ package com.athae.skillsandclasses.registry;
 import com.athae.skillsandclasses.Ref;
 import com.athae.skillsandclasses.interfaces.ISerializable;
 import com.athae.skillsandclasses.packets.skillsandclassesPacketContext;
-import com.athae.skillsandclasses.registry.JsonRegistry;
 import com.athae.skillsandclasses.registry.info.ClientSyncRegistration;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.athae.skillsandclasses.Log.skillsandclassesLog;
-import com.athae.skillsandclasses.MyPacket;
+import com.athae.skillsandclasses.packets.MyPacket;
 import dev.architectury.networking.NetworkManager;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -75,7 +74,7 @@ public class EfficientRegistryPacket<T extends ISerializable & JsonRegistry> ext
     @Override
     public void onReceived(NetworkManager.PacketContext ctx) {
 
-        skillsandclassesRegistryContainer reg = Database.getRegistry(type);
+        skillsandclassesRegistryContainer reg = Database.ExileRegistryType(type);
 
         items.forEach(x -> {
             x.unregisterFromExileRegistry();

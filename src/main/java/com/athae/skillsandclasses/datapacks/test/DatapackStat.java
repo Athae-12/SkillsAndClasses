@@ -16,7 +16,7 @@ public class DatapackStat extends Stat implements IAutoGson<DatapackStat> {
     public String id = "";
     public Elements ele = Elements.Physical;
 
-    public List<DataPackStatEffect> effect = new ArrayList<>();
+    public List<DatapackStatEffect> effect = new ArrayList<>();
 
     public transient String locname;
     public transient String locdesc;

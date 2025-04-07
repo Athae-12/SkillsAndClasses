@@ -1,14 +1,15 @@
-package com.athae.skillsandclasses;
+package com.athae.skillsandclasses.unit;
 
+import com.athae.skillsandclasses.entity.data.EntityData;
+import com.athae.skillsandclasses.packets.MyPacket;
 import com.athae.skillsandclasses.resources.Health;
 import com.athae.skillsandclasses.resources.Mana;
 import com.athae.skillsandclasses.resources.Stamina;
-import com.athae.skillsandclasses.registry.IGUID;
-import com.athae.skillsandclasses.resources.Elements;
-import com.athae.skillsandclasses.skillsandclassesRef;
 import com.athae.skillsandclasses.Classes.StatContainer.StatContainer;
 import com.athae.skillsandclasses.Classes.StatContainer.StatData;
 import com.athae.skillsandclasses.data.Stat;
+import com.athae.skillsandclasses.skillsandclassesRef;
+import com.athae.skillsandclasses.util.RandomUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;

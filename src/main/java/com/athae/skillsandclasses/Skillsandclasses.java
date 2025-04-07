@@ -1,13 +1,12 @@
 package com.athae.skillsandclasses;
 
+import com.athae.skillsandclasses.config.ClientConfigs;
+import com.athae.skillsandclasses.config.Config;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.inventory.MenuType;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -33,11 +32,17 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
-import com.athae.skillsandclasses.KeyBindingsHandler;
 import com.athae.skillsandclasses.client.gui.SkillsScreenMenu;
 
-@Mod(Skillsandclasses.MODID)
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.function.Consumer;
+
+@Mod(skillsandclassesRef.MODID)
 public class Skillsandclasses {
+    public static boolean RUN_DEV_TOOLS = false;
+
+    public static boolean RUN_DEV_TOOLS_REMOVE_WHEN_DONE = RUN_DEV_TOOLS; // this exists to stop me from making dumb mistakes when testing and forgetting about it
 
     public static final String MODID = "skillsandclasses";
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -108,6 +113,16 @@ public class Skillsandclasses {
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        }
+    }
+
+    public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("0.00");
+
+    public static String formatNumber(float num) {
+        if (num < ClientConfigs.getConfig().SHOW_DECIMALS_ON_NUMBER_SMALLER_THAN.get()) {
+            return DECIMAL_FORMAT.format(num);
+        } else {
+            return ((int) num) + "";
         }
     }
 }

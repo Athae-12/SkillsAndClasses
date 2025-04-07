@@ -1,5 +1,6 @@
-package com.athae.skillsandclasses;
+package com.athae.skillsandclasses.config;
 
+import com.athae.skillsandclasses.Skillsandclasses;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;

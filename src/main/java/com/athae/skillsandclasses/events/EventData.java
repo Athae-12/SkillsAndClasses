@@ -1,5 +1,6 @@
 package com.athae.skillsandclasses.events;
 
+import com.athae.skillsandclasses.Skillsandclasses;
 import com.athae.skillsandclasses.entity.data.EntityData;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -13,8 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EventData {
-    public static String IS_ATTACK_FULLY_CHARGED = "is_charged_atk";
-
     public static String NUMBER = "number";
     public static String BEFORE_CONVERSION_NUMBER = "before_conversion_number";
     public static String ITEM_ID = "item_id";
@@ -72,7 +71,7 @@ public class EventData {
     private HashMap<String, String> strings = new HashMap<>();
 
     private void tryFreezeErrorMessage() {
-        if (isFrozen && MMORPG.RUN_DEV_TOOLS) {
+        if (isFrozen && Skillsandclasses.RUN_DEV_TOOLS) {
             try {
                 //throw new RuntimeException("Event data frozen but code tried to modify it.");
             } catch (RuntimeException e) {

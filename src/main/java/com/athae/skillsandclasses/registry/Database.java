@@ -11,12 +11,12 @@ import java.util.List;
 public class Database {
 
     private static final HashMap<skillsandclassesRegistryType, skillsandclassesRegistryContainer> SERVER = new HashMap<>();
-    //  private static HashMap<ExileRegistryType, ExileRegistryContainer> BACKUP = new HashMap<>();
+    //  private static HashMap<ExileRegistryType, skillsandclassesRegistryContainer> BACKUP = new HashMap<>();
 
     public static boolean areDatapacksLoaded(Level world) {
         return skillsandclassesRegistryType.getInRegisterOrder(SyncTime.ON_LOGIN)
                 .stream()
-                .allMatch(x -> Database.getRegistry(x)
+                .allMatch(x -> Database.ExileRegistryType(x)
                         .isRegistrationDone());
     }
 
@@ -25,12 +25,12 @@ public class Database {
         return new ArrayList<>(SERVER.values());
     }
 
-    public static skillsandclassesRegistryContainer getRegistry(skillsandclassesRegistryType type) {
+    public static skillsandclassesRegistryContainer ExileRegistryType(skillsandclassesRegistryType type) {
         return SERVER.get(type);
     }
 
-    public static skillsandclassesRegistry get(skillsandclassesRegistryType type, String guid) {
-        return getRegistry(type).get(guid);
+    public static skillsandclassesRegistry<T> get(skillsandclassesRegistryType type, String guid) {
+        return ExileRegistryType(type).get(guid);
 
     }
 
@@ -38,7 +38,7 @@ public class Database {
 
         List<skillsandclassesRegistryType> list = skillsandclassesRegistryType.getInRegisterOrder(sync);
 
-        list.forEach(x -> getRegistry(x).sendUpdatePacket(player));
+        list.forEach(x -> ExileRegistryType(x).sendUpdatePacket(player));
     }
 
     public static void checkGuidValidity() {
@@ -46,7 +46,7 @@ public class Database {
         SERVER.values()
                 .forEach(c -> c.getAllIncludingSeriazable()
                         .forEach(x -> {
-                            skillsandclassesRegistry entry = (skillsandclassesRegistry) x;
+                            skillsandclassesRegistry<T> entry = (skillsandclassesRegistry<T>) x;
                             if (!entry.isGuidFormattedCorrectly()) {
                                 throw new RuntimeException(entry.getInvalidGuidMessage());
                             }
@@ -58,12 +58,12 @@ public class Database {
 
         //System.out.println("Starting Mine and Slash Registry auto validation.");
 
-        List<skillsandclassesRegistry> invalid = new ArrayList<>();
+        List<skillsandclassesRegistry<T>> invalid = new ArrayList<>();
 
         SERVER.values()
                 .forEach(c -> c.getList()
                         .forEach(x -> {
-                            skillsandclassesRegistry entry = (skillsandclassesRegistry) x;
+                            skillsandclassesRegistry<T> entry = (skillsandclassesRegistry<T>) x;
                             if (!entry.isRegistryEntryValid()) {
                                 invalid.add(entry);
                             }
